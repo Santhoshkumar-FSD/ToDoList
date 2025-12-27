@@ -1,0 +1,220 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    padding: 20px;
+    transition: background 1s ease;
+}
+
+.todos-bg-container {
+    height: 100vh;
+   
+}
+.todos-bg-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("./pexels-jessbaileydesign-34918667.jpg") center/cover no-repeat;
+  filter: blur(5px) brightness(0.9);
+  z-index: -1;
+}
+
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    animation: fadeInDown 1s ease;
+}
+
+/* animation */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+input[type="text"] {
+    border: 2px solid #90caf9;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="text"]:focus {
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+}
+
+
+.todos-heading {
+    text-align: center;
+    font-family: "Roboto";
+    font-size: 46px;
+    font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.create-task-heading {
+    font-family: "Roboto";
+    font-size: 32px;
+    font-weight: 700px;
+    text-align: left;
+}
+
+.create-task-heading-subpart {
+    font-family: "Roboto";
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.todo-items-heading {
+    font-family: "Roboto";
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.todos-items-heading-subpart {
+    font-family: "Roboto";
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.todo-items-container {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.todo-item-container {
+    margin-top: 15px;
+}
+
+.todos-user-input {
+    background-color: white;
+    width: 100%;
+    border: solid;
+    border-width: 1px;
+    border-color: #e4e7eb;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 15px;
+}
+
+.add-todo-button {
+    color: white;
+    background-color: #2196f3;
+    font-family: "Roboto";
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    border-width: 0px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3 ease;
+}
+.add-todo-button:hover {
+    background-color: #1976d2;
+    transform: scale(1.05);
+}
+
+
+.label-container {
+    background-color: rgba(33, 150, 243, 0.1);
+    width: 100%;
+    border: solid;
+    border-width: 5px;
+    border-color: #2196f3;
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+    border-radius: 5px;
+    animation: slideIn 0.5s ease;
+}
+
+/* animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.far {
+    color: red;
+    transition: transform 0.3s ease;
+}
+
+.far:hover {
+    transform: scale(1.5);
+}
+
+
+.checkbox-input {
+    width: 20px;
+    height: 20px;
+    margin-top: 12px;
+    margin-right: 12px;
+}
+
+.checkbox-label {
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 20px;
+    background: linear-gradient(90deg, #000000, #434343);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 82%;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 12px;
+}
+
+.checkbox-label.checked {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+/* ...existing code... */
+
+.todo-item-container {
+  /* ensure smooth transitions for the properties we change */
+  transition: height 300ms ease, opacity 300ms ease, transform 300ms ease, margin 300ms ease, padding 300ms ease;
+  overflow: hidden;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translateY(20px);
+  height: 0 !important;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* ...existing code... */
+
+.delete-icon-container {
+    text-align: right;
+    width: 18%;
+}
+
+.delete-icon {
+    padding: 15px;
+}
+
+
+
