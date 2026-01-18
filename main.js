@@ -16,6 +16,11 @@ let todoList = JSON.parse(localStorage.getItem('todoList')) || [
     text: "Learn JavaScript",
     uniqueNo: 3,
     createdAt: new Date().toLocaleString()
+  },
+  {
+    text: "Learn React JS",
+    uniqueNo: 4,
+    createdAt: new Date().toLocaleString()
   }
 ];
 
