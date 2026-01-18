@@ -1,7 +1,7 @@
 let todoItemsContainer = document.getElementById("todoItemsContainer");
 let addTodoButton = document.getElementById("addTodoButton");
 
-let todoList = [
+let todoList = JSON.parse(localStorage.getItem('todoList')) || [
   {
     text: "Learn HTML",
     uniqueNo: 1,
@@ -20,6 +20,10 @@ let todoList = [
 ];
 
 let todosCount = todoList.length;
+
+function saveTodos() {
+  localStorage.setItem('todoList', JSON.stringify(todoList));
+}
 
 function onTodoStatusChange(checkboxId, labelId) {
   let checkboxElement = document.getElementById(checkboxId);
@@ -48,7 +52,7 @@ function createAndAppendTodo(todo) {
   inputElement.type = "checkbox";
   inputElement.id = checkboxId;
 
-  inputElement.onclick = function() {
+  inputElement.onclick = function () {
     onTodoStatusChange(checkboxId, labelId);
   }
 
@@ -77,7 +81,7 @@ function createAndAppendTodo(todo) {
   labelContainer.appendChild(deleteIconContainer);
 
   let deleteIcon = document.createElement("i");
-  deleteIcon.classList.add("far","fa", "fa-trash", "delete-icon");
+  deleteIcon.classList.add("far", "fa", "fa-trash", "delete-icon");
 
   deleteIcon.onclick = function () {
     onDeleteTodo(todoId);
@@ -93,6 +97,13 @@ for (let todo of todoList) {
 
 function onDeleteTodo(todoId) {
   let todoElement = document.getElementById(todoId);
+
+  // Find and remove from todoList
+  let todoIndex = todoList.findIndex(todo => 'todo' + todo.uniqueNo === todoId);
+  if (todoIndex !== -1) {
+    todoList.splice(todoIndex, 1);
+    saveTodos();
+  }
 
   // Fix height so we can animate height -> 0
   todoElement.style.height = todoElement.offsetHeight + "px";
@@ -116,7 +127,7 @@ function onAddTodo() {
   let userInputElement = document.getElementById("todoUserInput");
   let userInputValue = userInputElement.value;
 
-  if(userInputValue === ""){
+  if (userInputValue === "") {
     alert("Enter Valid Text");
     return;
   }
@@ -129,10 +140,12 @@ function onAddTodo() {
     createdAt: new Date().toLocaleString()
   };
 
+  todoList.push(newTodo);
   createAndAppendTodo(newTodo);
+  saveTodos();
   userInputElement.value = "";
 }
 
-addTodoButton.onclick = function(){
+addTodoButton.onclick = function () {
   onAddTodo();
 }
